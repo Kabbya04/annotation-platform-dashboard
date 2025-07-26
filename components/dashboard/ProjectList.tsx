@@ -57,6 +57,7 @@ export function ProjectList({ projects }: ProjectListProps) {
             </div>
           </div>
         ))}
+      </div> {/* <-- FIX: This closing div was missing */}
     </Card>
   );
 }

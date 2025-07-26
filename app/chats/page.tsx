@@ -20,8 +20,15 @@ type Chat = {
   messages: Message[];
 };
 
-// Placeholder data for chat interface (remains the same)
-const conversations: Conversation[] = [ /* ... */ ];
+// Populated the placeholder data for the conversations list.
+const conversations: Conversation[] = [
+  { name: "Alice Johnson", avatar: "AJ", lastMessage: "Doing well, just working on a project.", active: true },
+  { name: "Bob Williams", avatar: "BW", lastMessage: "Can you check the latest dataset?" },
+  { name: "Charlie Brown", avatar: "CB", lastMessage: "I've completed the review." },
+  { name: "Diana Prince", avatar: "DP", lastMessage: "See you at the meeting tomorrow." },
+  { name: "Ethan Hunt", avatar: "EH", lastMessage: "Got it, thanks!" }
+];
+
 const currentChat: Chat = {
   name: "Alice Johnson",
   messages: [
@@ -82,6 +89,7 @@ export default function ChatsPage() {
             </div>
           </div>
         </main>
-      </>
+      </div>
+    </>
   );
 }

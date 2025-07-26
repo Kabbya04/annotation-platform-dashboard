@@ -47,7 +47,8 @@ export function Header() {
           className="p-2 rounded-full text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 hover:text-slate-900 dark:hover:text-white transition-colors"
           title="Toggle Theme"
         >
-          {theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />}
+          {/* FIX: Use `mounted` state to prevent hydration mismatch */}
+          {mounted && (theme === 'dark' ? <Sun size={20} /> : <Moon size={20} />)}
         </button>
         
         {/* Notifications */}

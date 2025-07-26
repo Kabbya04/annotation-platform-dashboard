@@ -44,6 +44,7 @@ export function DatasetList({ datasets }: DatasetListProps) {
             </div>
           </div>
         ))}
+      </div> {/* <-- FIX: This closing div was missing */}
     </Card>
   );
 }

@@ -36,6 +36,7 @@ export function OntologyList({ ontologies }: OntologyListProps) {
             </div>
           </div>
         ))}
+      </div> {/* <-- FIX: This closing div was missing */}
     </Card>
   );
 }
