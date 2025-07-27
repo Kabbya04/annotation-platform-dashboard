@@ -29,8 +29,8 @@ export default function OntologiesPage() {
       <div className="flex-1 p-6 overflow-y-auto">
         <div className="flex items-center justify-between mb-6">
           <div>
-            <h1 className="text-2xl font-bold text-slate-900 dark:text-white">Ontologies Management</h1>
-            <p className="text-slate-500 dark:text-slate-400 mt-1">Define and manage annotation labels for your projects.</p>
+            <h1 className="text-2xl font-bold text-foreground">Ontologies Management</h1>
+            <p className="text-muted-foreground mt-1">Define and manage annotation labels for your projects.</p>
           </div>
           <button 
             onClick={() => setIsModalOpen(true)}

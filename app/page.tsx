@@ -9,12 +9,9 @@ export default function DashboardPage() {
   return (
     <>
       <Header />
-      <div className="flex-1 p-6 overflow-y-auto">
+      <div className="flex-1 p-8 overflow-y-auto">
         <div className="space-y-8">
-          {/* Projects List */}
           <ProjectList projects={projects} />
-          
-          {/* Grid for Datasets and Ontologies */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             <DatasetList datasets={datasets} />
             <OntologyList ontologies={ontologies} />
