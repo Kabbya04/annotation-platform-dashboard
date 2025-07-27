@@ -2,12 +2,13 @@
 import React from 'react';
 import { Card } from '@/components/ui/Card';
 import { Dataset } from '@/lib/placeholder-data';
-import { MoreVertical, ImageIcon, FileText, VideoIcon } from 'lucide-react';
+import { MoreVertical, ImageIcon, FileText, VideoIcon, HelpCircle } from 'lucide-react';
 
 const TypeIcon = ({ type }: { type: Dataset['type'] }) => {
   if (type === 'Image') return <ImageIcon className="text-slate-400" size={16} />;
   if (type === 'Video') return <VideoIcon className="text-slate-400" size={16} />;
-  return <FileText className="text-slate-400" size={16} />;
+  if (type === 'Text') return <FileText className="text-slate-400" size={16} />;
+  return <HelpCircle className="text-slate-400" size={16} />; // Fallback icon
 };
 
 type DatasetListProps = {
@@ -35,9 +36,12 @@ export function DatasetList({ datasets }: DatasetListProps) {
               <TypeIcon type={dataset.type} />
               <span>{dataset.name}</span>
             </div>
-            <div className="col-span-3 text-center text-muted-foreground">{dataset.itemCount.toLocaleString()}</div>
+            {/* Handle optional itemCount */}
+            <div className="col-span-3 text-center text-muted-foreground">
+              {(dataset.itemCount ?? 0).toLocaleString()}
+            </div>
             <div className="col-span-3 text-right text-muted-foreground text-sm flex items-center justify-end gap-2">
-              <span>{new Date(dataset.createdAt).toLocaleDateString()}</span>
+              <span>{new Date(dataset.createdAt).toLocaleDateString('en-GB')}</span>
               <button className="text-muted-foreground hover:text-foreground p-1 rounded-md">
                 <MoreVertical size={16} />
               </button>

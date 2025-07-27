@@ -34,7 +34,7 @@ export default function DatasetsPage() {
           </div>
           <button 
             onClick={() => setIsModalOpen(true)}
-            className="flex items-center gap-2 bg-violet-600 text-white font-semibold rounded-md px-4 py-2 hover:bg-violet-700 transition-colors duration-200"
+            className="flex items-center gap-2 bg-blue-500 text-white font-semibold rounded-md px-4 py-2 hover:bg-blue-600 transition-colors duration-200"
           >
             <Plus size={18} />
             <span>Add New Dataset</span>

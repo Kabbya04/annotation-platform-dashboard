@@ -29,7 +29,8 @@ export function OntologyList({ ontologies }: OntologyListProps) {
             <div className="col-span-3 text-center text-muted-foreground">{ontology.projectCount}</div>
             <div className="col-span-3 text-right text-muted-foreground flex items-center justify-end gap-2">
               <Tag size={14} />
-              <span>{ontology.labelCount}</span>
+              {/* Use the length of the labels array */}
+              <span>{ontology.labels.length}</span>
               <button className="text-muted-foreground hover:text-foreground p-1 rounded-md ml-2">
                 <MoreVertical size={16} />
               </button>

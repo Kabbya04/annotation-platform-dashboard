@@ -24,7 +24,7 @@ export function Sidebar() {
 
   return (
     <aside className="w-64 flex-shrink-0 bg-card border-r flex flex-col">
-      <div className="p-4 border-b">
+      <div className="flex h-16 items-center border-b px-4">
         <Link href="/" className="flex items-center gap-2 text-xl font-bold text-foreground">
           <Box className="text-blue-500" size={28} />
           <span>TDI x Annotate</span>

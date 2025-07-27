@@ -3,6 +3,7 @@
 
 import { Dataset } from '@/lib/placeholder-data';
 import React, { useState } from 'react';
+import { UploadCloud } from 'lucide-react';
 
 type NewDatasetFormProps = {
   onCancel: () => void;
@@ -11,53 +12,54 @@ type NewDatasetFormProps = {
 
 export function NewDatasetForm({ onCancel, onSubmit }: NewDatasetFormProps) {
   const [name, setName] = useState('');
-  const [itemCount, setItemCount] = useState(0);
-  const [type, setType] = useState<'Image' | 'Text' | 'Video'>('Image');
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    if (!name || itemCount <= 0) return;
-    onSubmit({ name, itemCount, type });
+    if (!name) return;
+    // Mocking itemCount and type, as they are no longer in the form
+    onSubmit({ 
+      name, 
+      itemCount: Math.floor(Math.random() * 1000) + 50, 
+      type: 'Image' 
+    });
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-4">
+    <form onSubmit={handleSubmit} className="space-y-6">
       <div>
-        <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-1">Dataset Name</label>
+        <label htmlFor="name" className="block text-sm font-medium text-muted-foreground mb-1">Dataset Title</label>
         <input 
           type="text" 
           id="name" 
           value={name}
           onChange={(e) => setName(e.target.value)}
           className="w-full bg-background border rounded-md px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500"
+          placeholder="e.g., Q1 Self-Driving Car Images"
           required 
         />
       </div>
+      
       <div>
-        <label htmlFor="itemCount" className="block text-sm font-medium text-muted-foreground mb-1">Item Count</label>
-        <input 
-          type="number" 
-          id="itemCount" 
-          value={itemCount}
-          onChange={(e) => setItemCount(parseInt(e.target.value, 10))}
-          className="w-full bg-background border rounded-md px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500"
-          required 
-        />
+        <label className="block text-sm font-medium text-muted-foreground mb-1">Upload</label>
+        <div className="mt-2 flex justify-center rounded-lg border border-dashed border-border px-6 py-10">
+          <div className="text-center">
+            <UploadCloud className="mx-auto h-12 w-12 text-muted-foreground" aria-hidden="true" />
+            <div className="mt-4 flex text-sm leading-6 text-muted-foreground">
+              <label
+                htmlFor="file-upload"
+                className="relative cursor-pointer rounded-md bg-background font-semibold text-blue-500 focus-within:outline-none focus-within:ring-2 focus-within:ring-blue-600 focus-within:ring-offset-2 hover:text-blue-500"
+              >
+                <span>Upload a folder</span>
+                <input id="file-upload" name="file-upload" type="file" className="sr-only" />
+              </label>
+              <p className="pl-1">or drag and drop</p>
+            </div>
+            <p className="text-xs leading-5 text-muted-foreground/80">Images, Video, Text, or ZIP files</p>
+          </div>
+        </div>
       </div>
-      <div>
-        <label htmlFor="type" className="block text-sm font-medium text-muted-foreground mb-1">Type</label>
-        <select 
-          id="type" 
-          value={type}
-          onChange={(e) => setType(e.target.value as 'Image' | 'Text' | 'Video')}
-          className="w-full bg-background border rounded-md px-3 py-2 text-sm focus:ring-blue-500 focus:border-blue-500"
-        >
-          <option>Image</option>
-          <option>Text</option>
-          <option>Video</option>
-        </select>
-      </div>
-      <div className="flex justify-end gap-3 pt-4">
+
+      <div className="flex justify-end gap-3 pt-2">
         <button type="button" onClick={onCancel} className="bg-secondary text-secondary-foreground font-semibold rounded-md px-4 py-2 hover:bg-secondary/80 transition-colors">
           Cancel
         </button>

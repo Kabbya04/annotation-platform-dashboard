@@ -50,7 +50,7 @@ export function ProjectList({ projects }: ProjectListProps) {
                     <span>{project.teamSize}</span>
                   </div>
                 </td>
-                <td className="px-4 py-3 text-muted-foreground text-right">{new Date(project.createdAt).toLocaleDateString()}</td>
+                <td className="px-4 py-3 text-muted-foreground text-right">{new Date(project.createdAt).toLocaleDateString('en-GB')}</td>
                 <td className="px-4 py-3 text-right">
                   <button className="text-muted-foreground hover:text-foreground p-1 rounded-md">
                     <MoreVertical size={16} />
