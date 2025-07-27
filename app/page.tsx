@@ -9,7 +9,7 @@ export default function DashboardPage() {
   return (
     <>
       <Header />
-      <div className="flex-1 p-8 overflow-y-auto">
+      <div className="flex-1 p-6 lg:p-8 overflow-y-auto">
         <div className="space-y-8">
           <ProjectList projects={projects} />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">

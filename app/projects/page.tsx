@@ -47,7 +47,7 @@ export default function ProjectsPage() {
       createdAt: new Date().toISOString().split('T')[0],
     };
     setDatasets(prevDatasets => [newDataset, ...prevDatasets]);
-    setIsDatasetModalOpen(false); // Close dataset modal, project modal remains open
+    setIsDatasetModalOpen(false);
   };
 
   const handleAddOntology = (ontologyData: Omit<Ontology, 'id' | 'projectCount'>) => {
@@ -57,13 +57,13 @@ export default function ProjectsPage() {
       projectCount: 0,
     };
     setOntologies(prevOntologies => [newOntology, ...prevOntologies]);
-    setIsOntologyModalOpen(false); // Close ontology modal, project modal remains open
+    setIsOntologyModalOpen(false);
   };
   
   return (
     <>
       <Header />
-      <div className="flex-1 p-8 overflow-y-auto">
+      <div className="flex-1 p-6 lg:p-8 overflow-y-auto">
         <div className="flex items-center justify-between mb-8">
           <div>
             <h1 className="text-2xl font-bold text-foreground">All Projects</h1>
@@ -85,7 +85,6 @@ export default function ProjectsPage() {
         </div>
       </div>
 
-      {/* Project Creation Modal */}
       <Modal isOpen={isProjectModalOpen} onClose={() => setIsProjectModalOpen(false)} title="Create New Project">
         <NewProjectForm 
           datasets={datasets}
@@ -97,7 +96,6 @@ export default function ProjectsPage() {
         />
       </Modal>
 
-      {/* Dataset Creation Modal (can be opened from Project modal) */}
       <Modal isOpen={isDatasetModalOpen} onClose={() => setIsDatasetModalOpen(false)} title="Add New Dataset">
         <NewDatasetForm 
           onCancel={() => setIsDatasetModalOpen(false)}
@@ -105,7 +103,6 @@ export default function ProjectsPage() {
         />
       </Modal>
       
-      {/* Ontology Creation Modal (can be opened from Project modal) */}
       <Modal isOpen={isOntologyModalOpen} onClose={() => setIsOntologyModalOpen(false)} title="Create New Ontology">
         <NewOntologyForm 
           onCancel={() => setIsOntologyModalOpen(false)}

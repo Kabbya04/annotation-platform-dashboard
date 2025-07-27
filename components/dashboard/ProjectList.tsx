@@ -28,30 +28,30 @@ export function ProjectList({ projects }: ProjectListProps) {
       </div>
       <div className="overflow-x-auto">
         <table className="w-full text-sm">
-          <thead className="text-xs text-muted-foreground uppercase bg-secondary">
-            <tr>
-              <th className="px-4 py-3 font-medium text-left">Project Name</th>
-              <th className="px-4 py-3 font-medium text-left">Status</th>
-              <th className="px-4 py-3 font-medium text-left">Project Manager</th>
-              <th className="px-4 py-3 font-medium text-center">Team</th>
-              <th className="px-4 py-3 font-medium text-right">Created</th>
+          <thead>
+            <tr className="border-b">
+              <th className="px-4 py-3 font-semibold text-left text-muted-foreground uppercase text-xs tracking-wider">Project Name</th>
+              <th className="px-4 py-3 font-semibold text-left text-muted-foreground uppercase text-xs tracking-wider">Status</th>
+              <th className="px-4 py-3 font-semibold text-left text-muted-foreground uppercase text-xs tracking-wider">Project Manager</th>
+              <th className="px-4 py-3 font-semibold text-center text-muted-foreground uppercase text-xs tracking-wider">Team</th>
+              <th className="px-4 py-3 font-semibold text-right text-muted-foreground uppercase text-xs tracking-wider">Created</th>
               <th className="px-4 py-3 w-12"></th>
             </tr>
           </thead>
-          <tbody className="divide-y">
-            {projects.map((project) => (
-              <tr key={project.id} className="hover:bg-secondary/50">
-                <td className="px-4 py-3 font-medium text-foreground">{project.name}</td>
-                <td className="px-4 py-3"><Badge variant={getStatusVariant(project.status)}>{project.status}</Badge></td>
-                <td className="px-4 py-3 text-muted-foreground">{project.assignedPM}</td>
-                <td className="px-4 py-3 text-muted-foreground">
+          <tbody>
+            {projects.map((project, index) => (
+              <tr key={project.id} className={`hover:bg-secondary/50 ${index === projects.length - 1 ? '' : 'border-b'}`}>
+                <td className="px-4 py-4 font-medium text-foreground">{project.name}</td>
+                <td className="px-4 py-4"><Badge variant={getStatusVariant(project.status)}>{project.status}</Badge></td>
+                <td className="px-4 py-4 text-muted-foreground">{project.assignedPM}</td>
+                <td className="px-4 py-4 text-muted-foreground">
                   <div className="flex items-center justify-center gap-1">
                     <Users size={14} />
                     <span>{project.teamSize}</span>
                   </div>
                 </td>
-                <td className="px-4 py-3 text-muted-foreground text-right">{new Date(project.createdAt).toLocaleDateString('en-GB')}</td>
-                <td className="px-4 py-3 text-right">
+                <td className="px-4 py-4 text-muted-foreground text-right">{new Date(project.createdAt).toLocaleDateString('en-GB')}</td>
+                <td className="px-4 py-4 text-right">
                   <button className="text-muted-foreground hover:text-foreground p-1 rounded-md">
                     <MoreVertical size={16} />
                   </button>

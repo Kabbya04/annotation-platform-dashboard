@@ -5,10 +5,10 @@ import { Dataset } from '@/lib/placeholder-data';
 import { MoreVertical, ImageIcon, FileText, VideoIcon, HelpCircle } from 'lucide-react';
 
 const TypeIcon = ({ type }: { type: Dataset['type'] }) => {
-  if (type === 'Image') return <ImageIcon className="text-slate-400" size={16} />;
-  if (type === 'Video') return <VideoIcon className="text-slate-400" size={16} />;
-  if (type === 'Text') return <FileText className="text-slate-400" size={16} />;
-  return <HelpCircle className="text-slate-400" size={16} />; // Fallback icon
+  if (type === 'Image') return <ImageIcon className="text-muted-foreground" size={16} />;
+  if (type === 'Video') return <VideoIcon className="text-muted-foreground" size={16} />;
+  if (type === 'Text') return <FileText className="text-muted-foreground" size={16} />;
+  return <HelpCircle className="text-muted-foreground" size={16} />;
 };
 
 type DatasetListProps = {
@@ -22,22 +22,14 @@ export function DatasetList({ datasets }: DatasetListProps) {
         <h2 className="text-lg font-semibold text-card-foreground">Recent Datasets</h2>
         <p className="text-sm text-muted-foreground">Your uploaded data sources.</p>
       </div>
-
-      <div className="grid grid-cols-12 gap-4 px-4 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider border-b">
-        <div className="col-span-6">Dataset Name</div>
-        <div className="col-span-3 text-center">Items</div>
-        <div className="col-span-3 text-right">Created</div>
-      </div>
-
-      <div className="divide-y">
-        {datasets.map((dataset) => (
-          <div key={dataset.id} className="grid grid-cols-12 gap-4 px-4 py-3 items-center hover:bg-secondary/50 transition-colors duration-150">
-            <div className="col-span-6 font-medium text-foreground flex items-center gap-3">
+      <div>
+        {datasets.map((dataset, index) => (
+          <div key={dataset.id} className={`grid grid-cols-12 gap-4 px-4 py-3 items-center hover:bg-secondary/50 transition-colors duration-150 ${index === datasets.length - 1 ? '' : 'border-b'}`}>
+            <div className="col-span-7 font-medium text-foreground flex items-center gap-3">
               <TypeIcon type={dataset.type} />
               <span>{dataset.name}</span>
             </div>
-            {/* Handle optional itemCount */}
-            <div className="col-span-3 text-center text-muted-foreground">
+            <div className="col-span-2 text-center text-muted-foreground">
               {(dataset.itemCount ?? 0).toLocaleString()}
             </div>
             <div className="col-span-3 text-right text-muted-foreground text-sm flex items-center justify-end gap-2">
