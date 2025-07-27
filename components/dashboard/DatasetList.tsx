@@ -17,34 +17,34 @@ type DatasetListProps = {
 export function DatasetList({ datasets }: DatasetListProps) {
   return (
     <Card className="overflow-hidden">
-      <div className="p-4 border-b border-slate-200 dark:border-slate-700/80">
-        <h2 className="text-lg font-semibold text-slate-900 dark:text-white">Recent Datasets</h2>
-        <p className="text-sm text-slate-500 dark:text-slate-400">Your uploaded data sources.</p>
+      <div className="p-4 border-b">
+        <h2 className="text-lg font-semibold text-card-foreground">Recent Datasets</h2>
+        <p className="text-sm text-muted-foreground">Your uploaded data sources.</p>
       </div>
 
-      <div className="grid grid-cols-12 gap-4 px-4 py-2 text-xs font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider border-b border-slate-200 dark:border-slate-700/80">
+      <div className="grid grid-cols-12 gap-4 px-4 py-2 text-xs font-semibold text-muted-foreground uppercase tracking-wider border-b">
         <div className="col-span-6">Dataset Name</div>
         <div className="col-span-3 text-center">Items</div>
         <div className="col-span-3 text-right">Created</div>
       </div>
 
-      <div className="divide-y divide-slate-200 dark:divide-slate-800">
+      <div className="divide-y">
         {datasets.map((dataset) => (
-          <div key={dataset.id} className="grid grid-cols-12 gap-4 px-4 py-3 items-center hover:bg-slate-100 dark:hover:bg-slate-800/40 transition-colors duration-150">
-            <div className="col-span-6 font-medium text-slate-900 dark:text-white flex items-center gap-3">
+          <div key={dataset.id} className="grid grid-cols-12 gap-4 px-4 py-3 items-center hover:bg-secondary/50 transition-colors duration-150">
+            <div className="col-span-6 font-medium text-foreground flex items-center gap-3">
               <TypeIcon type={dataset.type} />
               <span>{dataset.name}</span>
             </div>
-            <div className="col-span-3 text-center text-slate-600 dark:text-slate-300">{dataset.itemCount.toLocaleString()}</div>
-            <div className="col-span-3 text-right text-slate-500 dark:text-slate-400 text-sm flex items-center justify-end gap-2">
+            <div className="col-span-3 text-center text-muted-foreground">{dataset.itemCount.toLocaleString()}</div>
+            <div className="col-span-3 text-right text-muted-foreground text-sm flex items-center justify-end gap-2">
               <span>{new Date(dataset.createdAt).toLocaleDateString()}</span>
-              <button className="text-slate-500 hover:text-white p-1 rounded-md">
+              <button className="text-muted-foreground hover:text-foreground p-1 rounded-md">
                 <MoreVertical size={16} />
               </button>
             </div>
           </div>
         ))}
-      </div> {/* <-- FIX: This closing div was missing */}
+      </div>
     </Card>
   );
 }
